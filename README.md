@@ -20,12 +20,26 @@ its `index.html` and be referenced with a relative path.
 
 ## Use with Heroku
 
+Two equivalent ways: the CLI or the Heroku dashboard.
+
+### With the CLI
+
 ```bash
 heroku config:set MAINTENANCE_PAGE_URL=https://<account>.github.io/maintenance-pages/out-of-service/index.html -a <app>
 heroku maintenance:on -a <app>
 ```
 
 Back to normal: `heroku maintenance:off -a <app>`.
+
+### With the Heroku dashboard
+
+Open the app, then its **Settings** tab:
+
+1. **Config Vars**: click *Reveal Config Vars*, then add a variable named
+   `MAINTENANCE_PAGE_URL`, with the page URL as its value (same URL as in the
+   CLI example above).
+2. **Maintenance Mode** (further down the page): switch the toggle on; it then
+   reads "Maintenance mode is on". Switch it off to go back to normal.
 
 Do not use a `raw.githubusercontent.com` or `github.com/.../blob/...` URL: they
 are not served as a web page.
